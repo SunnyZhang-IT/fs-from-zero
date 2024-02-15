@@ -5,7 +5,7 @@
 int main(int argc, char *argv[])
 {
 
-  HelloFS fs;
+  HelloWorldFS fs;
 
   int status = fs.run(argc, argv);
 

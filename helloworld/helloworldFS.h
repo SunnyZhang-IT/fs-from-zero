@@ -7,12 +7,12 @@
 
 #include "Fuse-impl.h"
 
-class HelloFS : public Fusepp::Fuse<HelloFS>
+class HelloWorldFS : public Fusepp::Fuse<HelloWorldFS>
 {
 public:
-  HelloFS() {}
+  HelloWorldFS() {}
 
-  ~HelloFS() {}
+  ~HelloWorldFS() {}
 
   static int getattr (const char *, struct stat *, struct fuse_file_info *);
 
@@ -21,8 +21,6 @@ public:
                      off_t offset, struct fuse_file_info *fi,
                      enum fuse_readdir_flags);
   
-  static int open(const char *path, struct fuse_file_info *fi);
-
 };
 
 #endif

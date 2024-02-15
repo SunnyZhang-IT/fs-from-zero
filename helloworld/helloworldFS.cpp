@@ -19,7 +19,7 @@ static const string hello_str = "Data Storage Zhang!\n";
 static const string hello_path = "/helloworld";
 static const string dir_path = "/dir";
 
-int HelloFS::getattr(const char *path, struct stat *stbuf, struct fuse_file_info *)
+int HelloWorldFS::getattr(const char *path, struct stat *stbuf, struct fuse_file_info *)
 {
 	int res = 0;
 
@@ -40,7 +40,7 @@ int HelloFS::getattr(const char *path, struct stat *stbuf, struct fuse_file_info
 	return res;
 }
 
-int HelloFS::readdir(const char *path, void *buf, fuse_fill_dir_t filler,
+int HelloWorldFS::readdir(const char *path, void *buf, fuse_fill_dir_t filler,
 			               off_t, struct fuse_file_info *, enum fuse_readdir_flags)
 {
 	if (path != root_path)
@@ -54,14 +54,3 @@ int HelloFS::readdir(const char *path, void *buf, fuse_fill_dir_t filler,
 	return 0;
 }
 
-
-int HelloFS::open(const char *path, struct fuse_file_info *fi)
-{
-	if (path != hello_path)
-		return -ENOENT;
-
-	if ((fi->flags & 3) != O_RDONLY)
-		return -EACCES;
-
-	return 0;
-}
